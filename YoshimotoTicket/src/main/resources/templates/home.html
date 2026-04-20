@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="ja" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<meta charset="UTF-8">
+	<title>FANY Ticket 模写</title>
+
+	<link rel="stylesheet" th:href="@{/css/home.css}">
+</head>
+
+<body>
+
+	<!-- ロゴを表示 -->
+	<div class="hero-logo-top">
+		FANY Online Ticket
+	</div>
+
+	<!-- ====== 検索エリア ====== -->
+	<section class="search">
+		<div class="search__inner">
+			<input type="text" class="search__input" placeholder="出演者/公演名/会場名で検索">
+			<button class="search__button">検索</button>
+		</div>
+	</section>
+
+	<!-- ====== スライダー ====== -->
+	<section class="hero">
+		<button class="hero__arrow hero__arrow--left" id="prevBtn">&#9664;</button>
+
+		<div class="hero__banner">
+			<img id="heroImage" class="hero__image" src="/img/banner1.jpg" alt="banner">
+		</div>
+
+		<button class="hero__arrow hero__arrow--right" id="nextBtn">&#9654;</button>
+	</section>
+
+
+	<!-- ====== PICK UP ====== -->
+	<section class="pickup">
+		<div class="pickup__header">
+			<h2 class="pickup__title">PICK UP</h2>
+		</div>
+
+		<!-- タブ -->
+		<div class="pickup__tabs">
+		    <h3 class="pickup__tab-title pickup__tab-title--active" data-target="talent">タレント</h3>
+		</div>
+
+
+		<!-- タレント一覧 -->
+		<div class="pickup__content" id="talent">
+			<div class="card-grid">
+				<article class="card">
+					<div class="card__thumb card__thumb--dummy"></div>
+					<p class="card__label">滝音</p>
+				</article>
+				<article class="card">
+					<div class="card__thumb card__thumb--dummy"></div>
+					<p class="card__label">ロングコートダディ</p>
+				</article>
+				<article class="card">
+					<div class="card__thumb card__thumb--dummy"></div>
+					<p class="card__label">アキナ</p>
+				</article>
+				<article class="card">
+					<div class="card__thumb card__thumb--dummy"></div>
+					<p class="card__label">祇園</p>
+				</article>
+				<article class="card">
+					<div class="card__thumb card__thumb--dummy"></div>
+					<p class="card__label">金属バット</p>
+				</article>
+			</div>
+		</div>
+		
+		<!-- タブ -->
+				<div class="pickup__tabs">
+				    <h3 class="pickup__tab-title" data-target="event">公演</h3>
+				</div>
+
+		<!-- 公演一覧 -->
+		<div class="pickup__content hidden" id="event">
+			<div class="card-grid card-grid--event">
+				<article class="event-card">
+					<div class="event-card__thumb card__thumb--dummy"></div>
+					<div class="event-card__body">
+						<p class="event-card__title">【ぶっ通し券】DAIENKAI 2026</p>
+						<p class="event-card__date">2026/07/31(金) ～ 2026/08/02(日)</p>
+						<p class="event-card__place">東京ガーデンシアター（東京都）</p>
+					</div>
+				</article>
+
+				<article class="event-card">
+					<div class="event-card__thumb card__thumb--dummy"></div>
+					<div class="event-card__body">
+						<p class="event-card__title">空気階段第9回単独公演「●●●」</p>
+						<p class="event-card__date">2026/06/30(火) ～ 2026/07/05(日)</p>
+						<p class="event-card__place">東京芸術劇場 プレイハウス（東京都）</p>
+					</div>
+				</article>
+
+				<article class="event-card">
+					<div class="event-card__thumb card__thumb--dummy"></div>
+					<div class="event-card__body">
+						<p class="event-card__title">M-1グランプリ2025 スペシャルツアーファイナル KOBE公演</p>
+						<p class="event-card__date">2026/06/03(水)</p>
+						<p class="event-card__place">GLION ARENA KOBE（兵庫県）</p>
+					</div>
+				</article>
+			</div>
+		</div>
+	</section>
+
+	<!-- JavaScript -->
+	<script th:src="@{/js/hero-slider.js}"></script>
+	<script th:src="@{/js/pickup-tabs.js}"></script>
+
+</body>
+
+</html>
