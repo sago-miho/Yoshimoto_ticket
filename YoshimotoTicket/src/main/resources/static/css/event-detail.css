@@ -53,7 +53,8 @@ body {
 
 /* 左側：項目名（th） */
 .info-table th {
-    width: 30%;
+    width: 35%;
+	white-space: nowrap;
     padding: 25px;
     background-color: #fff2e0;
     color: #8a4d1a;
@@ -81,7 +82,7 @@ body {
 }
 
 .performance-status.open { background-color: #27ae60; }    /* 在庫あり */
-.performance-status.danger { background-color: #e67e22; }  /* 残りわずか */
+.performance-status.danger { background-color: chocolate; }  /* 残りわずか */
 .performance-status.soldout { background-color: #c0392b; } /* 完売 */
 
 /* 戻るリンク等のエリア */
