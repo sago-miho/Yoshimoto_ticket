@@ -81,6 +81,60 @@ body {
     color: white;
 }
 
+/* 購入ボタンのエリア（中央寄せ） */
+.action-menu {
+    margin-top: 30px;
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* ボタンを中央に */
+    gap: 15px;
+}
+
+/* 予約ボタン：デカくて目立つオレンジ */
+.buy-btn {
+    width: 100%;
+    max-width: 450px;       /* ボタンの横幅 */
+    padding: 20px;
+    font-size: 1.6rem;      /* 文字をかなり大きく */
+    font-weight: bold;
+    color: white;
+    background-color: #ff4b00; /* 吉本レッド/オレンジ */
+    border: none;
+    border-radius: 50px;    /* 丸みのあるデザイン */
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 6px 20px rgba(255, 75, 0, 0.3);
+}
+
+/* ホバー時（マウスを乗せた時） */
+.buy-btn:hover:not(:disabled) {
+    background-color: #e64400;
+    transform: translateY(-3px); /* 少し浮く */
+    box-shadow: 0 10px 25px rgba(255, 75, 0, 0.4);
+}
+
+/* 完売（disabled）時の色：グレーにする */
+.buy-btn:disabled {
+    background-color: #bdc3c7;
+    cursor: not-allowed;      /* 禁止マークのカーソル */
+    box-shadow: none;
+    transform: none;
+}
+
+/* 戻るリンクの調整 */
+.back-link {
+    margin-top: 10px;
+    font-size: 1.1rem;
+    color: #7f8c8d;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.back-link:hover {
+    color: #333;
+    text-decoration: underline;
+}
+
 .performance-status.open { background-color: #27ae60; }    /* 在庫あり */
 .performance-status.danger { background-color: chocolate; }  /* 残りわずか */
 .performance-status.soldout { background-color: #c0392b; } /* 完売 */

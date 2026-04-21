@@ -61,4 +61,21 @@ public class EventController {
             return "redirect:/home";
         }
     }
+    
+ // 購入処理（POSTリクエスト）
+    @PostMapping("/event/purchase/{id}")
+    public String purchaseTicket(@PathVariable("id") Long id) {
+        // データベースから公演情報を取得
+        EventEntity event = eventRepository.findById(id).get();
+
+        // 在庫が0より大きい場合のみ引き算する
+        if (event.getRemaining() > 0) {
+            event.setRemaining(event.getRemaining() - 1);
+            // データベースを更新（上書き保存）
+            eventRepository.save(event);
+        }
+
+        //更新後の詳細画面へリダイレクト（再表示）
+        return "redirect:/event/detail/" + id;
+    }
 }

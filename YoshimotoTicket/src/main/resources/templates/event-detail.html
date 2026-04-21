@@ -49,6 +49,13 @@
             </table>
 
             <div class="action-menu">
+				<!--チケット予約処理-->
+				<form th:action="@{/event/purchase/{id}(id=${event.id})}" method="post">
+				                    <button type="submit" class="buy-btn" 
+				                            th:disabled="${event.remaining <= 0}">
+				                        <span th:text="${event.remaining > 0} ? 'チケットを予約する' : '完売しました'"></span>
+				                    </button>
+				                </form>
                 <a th:href="@{/home}" class="back-link">← 公演一覧に戻る</a>
             </div>
         </main>
