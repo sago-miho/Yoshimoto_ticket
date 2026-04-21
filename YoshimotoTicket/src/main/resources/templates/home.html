@@ -6,15 +6,26 @@
 	<title>FANY Ticket 模写</title>
 
 	<link rel="stylesheet" th:href="@{/css/home.css}">
+	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
 </head>
 
 <body>
+	<div class="hero-area">
 
 	<!-- ロゴを表示 -->
 	<div class="hero-logo-top">
 		FANY Online Ticket
 	</div>
 
+	<!-- 公演追加ボタン（ここに置く！） -->
+	    <a href="/event/new" class="add_event_icon_wrapper hero_add_btn">
+	        <div class="add_event_icon">
+	            <span class="material-icons">settings</span>
+	        </div>
+	        <div class="add_event_label">公演追加</div>
+	    </a>
+		
 	<!-- ====== 検索エリア ====== -->
 	<section class="search">
 		<div class="search__inner">
@@ -33,7 +44,7 @@
 
 		<button class="hero__arrow hero__arrow--right" id="nextBtn">&#9654;</button>
 	</section>
-
+	</div>
 
 	<!-- ====== PICK UP ====== -->
 	<section class="pickup">
@@ -90,37 +101,38 @@
 				</div>
 
 		<!-- 公演一覧 -->
-		<div class="pickup__content hidden" id="event">
-			<div class="card-grid card-grid--event">
-				<article class="event-card">
-					<div class="event-card__thumb card__thumb--dummy"></div>
-					<div class="event-card__body">
-						<p class="event-card__title">【ぶっ通し券】DAIENKAI 2026</p>
-						<p class="event-card__date">2026/07/31(金) ～ 2026/08/02(日)</p>
-						<p class="event-card__place">東京ガーデンシアター（東京都）</p>
-					</div>
-				</article>
+		<section class="performance">
+		    <div class="performance-wrapper">
 
-				<article class="event-card">
-					<div class="event-card__thumb card__thumb--dummy"></div>
-					<div class="event-card__body">
-						<p class="event-card__title">空気階段第9回単独公演「●●●」</p>
-						<p class="event-card__date">2026/06/30(火) ～ 2026/07/05(日)</p>
-						<p class="event-card__place">東京芸術劇場 プレイハウス（東京都）</p>
-					</div>
-				</article>
+		        <div class="performance-card">
+		            <a href="/event/detail/1" class="full-card-link"></a>
+		            <div class="performance-title">なんばグランド花月 昼公演</div>
+		            <div class="performance-info">
+		                <div class="performance-date">2026/07/12(日) 14:00〜</div>
+		                <div class="performance-status soldout">SOLD OUT</div>
+		            </div>
+		        </div>
 
-				<article class="event-card">
-					<div class="event-card__thumb card__thumb--dummy"></div>
-					<div class="event-card__body">
-						<p class="event-card__title">M-1グランプリ2025 スペシャルツアーファイナル KOBE公演</p>
-						<p class="event-card__date">2026/06/03(水)</p>
-						<p class="event-card__place">GLION ARENA KOBE（兵庫県）</p>
-					</div>
-				</article>
-			</div>
-		</div>
-	</section>
+		        <div class="performance-card">
+		            <a href="/event/detail/2" class="full-card-link"></a>
+		            <div class="performance-title">ルミネtheよしもと 夜公演</div>
+		            <div class="performance-info">
+		                <div class="performance-date">2026/07/20(月) 19:00〜</div>
+		                <div class="performance-status danger">残り 5 枚</div>
+		            </div>
+		        </div>
+
+		        <div class="performance-card">
+		            <a href="/event/detail/3" class="full-card-link"></a>
+		            <div class="performance-title">祇園花月 昼公演</div>
+		            <div class="performance-info">
+		                <div class="performance-date">2026/08/02(日) 13:00〜</div>
+		                <div class="performance-status open">残り 80 枚</div>
+		            </div>
+		        </div>
+
+		    </div>
+		</section>
 
 	<!-- JavaScript -->
 	<script th:src="@{/js/hero-slider.js}"></script>

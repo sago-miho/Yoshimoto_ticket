@@ -1,0 +1,34 @@
+<form th:action="@{/event/save}" th:object="${event}" method="post">
+    
+    <div class="form-group">
+        <label>公演名</label>
+        <input type="text" th:field="*{title}" placeholder="例：なんばグランド花月 昼公演">
+    </div>
+
+    <div class="form-group">
+        <label>会場</label>
+        <input type="text" th:field="*{venue}" placeholder="例：なんばグランド花月">
+    </div>
+
+    <div class="form-group">
+        <label>日時</label>
+        <input type="datetime-local" th:field="*{date}">
+    </div>
+
+    <div class="form-group">
+        <label>出演者</label>
+        <input type="text" th:field="*{cast}" placeholder="例：中川家、次長課長、他">
+    </div>
+
+    <div class="form-group">
+        <label>チケット料金（円）</label>
+        <input type="number" th:field="*{price}" placeholder="例：4500">
+    </div>
+
+    <div class="form-group">
+        <label>販売総数（枚）</label>
+        <input type="number" th:field="*{totalTickets}" placeholder="例：100">
+    </div>
+
+    <button type="submit" class="submit-button">公演を登録する</button>
+</form>

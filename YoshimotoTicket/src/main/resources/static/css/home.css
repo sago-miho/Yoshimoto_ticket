@@ -77,6 +77,54 @@
     font-weight: bold;
 }
 
+/* ロゴ＋検索＋スライダー全体を包む */
+.hero-area {
+    position: relative;
+}
+
+/* アイコン＋文字の縦並び */
+.add_event_icon_wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-decoration: none;
+    color: #333;
+}
+
+/* 公演追加ボタンの位置：ロゴと同じ高さ、スライダー右端 */
+.hero_add_btn {
+    position: absolute;
+    top: 1%;
+    right: 10%;
+}
+
+/* ▼ 丸アイコン */
+.add_event_icon {
+    width: 42px;
+    height: 42px;
+    background-color: #f2f2f2;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 0 4px rgba(0,0,0,0.15);
+}
+
+.add_event_icon:hover {
+    background-color: #e6e6e6;
+}
+
+/* ▼ 下の文字（小さく） */
+.add_event_label {
+    font-size: 13px;
+    margin-top: 4px;
+    color: #555;
+	font-weight: bold;
+}
+
+
+
+
 /* PICK UP 全体を中央寄せ */
 .pickup {
 	background-color:  #c4c4c4; 
@@ -141,4 +189,124 @@
 
 .card:hover {
     opacity: 0.85;
+}
+
+/* 公演セクションタイトル */
+.section-title {
+    font-size: 20px;
+    font-weight: bold;
+    margin-bottom: 12px;
+    color: #333;
+}
+
+/* カードの外枠（コンテナ） */
+.performance-wrapper {
+    width: 100%;
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 20px;
+    box-sizing: border-box;
+}
+
+/* カード全体 */
+.performance-card {
+    position: relative; /* カード全体のリンクを機能させるために必須 */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: #fff;
+	/*角の丸み調整*/
+    border-radius: 15px;
+	/*上下左右の調整*/
+    padding: 40px 200px;
+	/*各カードの間隔調整*/ 
+    margin-bottom: 10px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    box-sizing: border-box;
+    transition: transform 0.2s, box-shadow 0.2s, background-color 0.2s;
+    cursor: pointer;
+}
+
+/* ホバー時の演出 */
+.performance-card:hover {
+    transform: translateY(-2px);
+    background-color: #f9f9f9;
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.12);
+}
+
+/* カード全体をリンクにする透明レイヤー */
+.full-card-link {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+}
+
+/* 公演タイトル部分 */
+.performance-title {
+    font-size: 20px;
+    font-weight: bold;
+    margin-bottom: 0;
+    color: #333;
+    flex: 1;
+    margin-right: 20px;
+    z-index: 2; /* リンクの上に表示 */
+    pointer-events: none; /* リンクのクリックを邪魔しない */
+}
+
+/* 右側の情報エリア（日付と枚数を横に並べる） */
+.performance-info {
+	display: flex;
+	    align-items: center; /* 縦方向の中央揃え */
+	    justify-content: flex-end; /* 右側に寄せる */
+	    gap: 60px; /* 日付と枚数の間の距離 */
+	    width: 400px; /* 右側エリア全体の幅を固定する */
+	    flex-shrink: 0;
+	    z-index: 2;
+	    pointer-events: none;
+}
+
+/* 日付 */
+.performance-date {
+    font-size: 15px;
+    color: #555;
+    margin-bottom: 0;
+}
+
+/* ステータス・チケット枚数 共通設定 */
+.performance-status {
+	font-size: 15px;
+	    font-weight: bold;
+	    width: 120px; /* 枚数表示自体の幅を固定する */
+	    text-align: center; /* 固定幅の中で中央に寄せる */
+	    display: flex;
+	    justify-content: center;
+	    align-items: center;
+}
+
+/* 1. 通常時（10枚以上ある場合）：黒字 */
+.performance-status.open {
+    color: #333; 
+}
+
+/* 2. 残り10枚を切った場合：赤文字（太字で強調） */
+.performance-status.danger {
+    color: #e74c3c; /* SOLD OUTと同じ赤系統にすることで緊急度を出す */
+    font-weight: 800; /* より太くして目立たせる */
+}
+
+/* 3. SOLD OUT（赤枠）：完売 */
+.performance-status.soldout {
+	color: #e74c3c !important;
+	    border: 1.5px solid #e74c3c;
+	    padding: 3px 0; /* 上下だけパディング */
+	    width: 120px;   /* openやdangerと同じ幅にする */
+	    height: 30px;  /* 高さを固定 */
+	    border-radius: 6px;
+	    background-color: #fff5f5;
+	    font-size: 13px;
+	    box-sizing: border-box; /* 枠線を含めたサイズ計算 */
 }
