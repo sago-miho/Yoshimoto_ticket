@@ -62,7 +62,7 @@ public class EventController {
         }
     }
     
- // 購入処理（POSTリクエスト）
+ // 予約処理（POSTリクエスト）
     @PostMapping("/event/purchase/{id}")
     public String purchaseTicket(@PathVariable("id") Long id) {
         // データベースから公演情報を取得

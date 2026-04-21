@@ -90,7 +90,7 @@ body {
     gap: 15px;
 }
 
-/* 予約ボタン：デカくて目立つオレンジ */
+/* 予約ボタン */
 .buy-btn {
     width: 100%;
     max-width: 450px;       /* ボタンの横幅 */
@@ -98,7 +98,7 @@ body {
     font-size: 1.6rem;      /* 文字をかなり大きく */
     font-weight: bold;
     color: white;
-    background-color: #ff4b00; /* 吉本レッド/オレンジ */
+    background-color: #ff4b00; 
     border: none;
     border-radius: 50px;    /* 丸みのあるデザイン */
     cursor: pointer;
