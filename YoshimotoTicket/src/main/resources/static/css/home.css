@@ -87,3 +87,58 @@
     align-items: center; 
 }
 
+/* ====== タレントカード ====== */
+.card {
+    display: flex;
+    flex-direction: column;
+    width: 160px;
+    text-decoration: none;
+    color: inherit;
+    cursor: pointer;
+    align-items: center;
+}
+
+/* ====== PICKUP：タレント写真を横一列に ====== */
+.pickup_content {
+    display: flex;
+    justify-content: center;   /* 中央揃え */
+    align-items: flex-start;
+    gap: 24px;                 /* カードの間隔 */
+    flex-wrap: nowrap;         /* 横一列固定 */
+    width: 100%;
+}
+
+.card_thumb {
+    width: 160px;
+    height: 160px;
+    object-fit: cover;
+    border-radius: 8px;
+    background-color: #ddd;
+}
+
+/* 滝音の切り抜き位置調整 */
+.takione_thumb {
+    object-position: 65% 40%; 
+}
+
+/* ロングコートダディの切り抜き位置調整 */
+.lcd_thumb {
+    object-position: 35% 50%;
+}
+
+/* アキナの切り抜き位置調整 */
+.akina_thumb {
+    object-position: 45% 50%;
+}
+
+
+.card_label {
+    margin-top: 8px;
+    font-size: 16px;
+    font-weight: bold;
+    text-align: center;
+}
+
+.card:hover {
+    opacity: 0.85;
+}
