@@ -9,39 +9,47 @@
     <div class="form-container">
         <h1>新規公演登録</h1>
         <form th:action="@{/event/new}" th:object="${event}" method="post">
+            
             <div class="form-group">
                 <label>公演名</label>
-                <input type="text" th:field="*{title}" placeholder="例：吉本新喜劇 特別公演" required>
+                <input type="text" th:field="*{title}" placeholder="例：吉本新喜劇 特別公演">
+                <p th:if="${#fields.hasErrors('title')}" th:errors="*{title}" class="error-msg"></p>
             </div>
             
             <div class="form-group">
                 <label>会場</label>
                 <input type="text" th:field="*{venue}" placeholder="例：なんばグランド花月">
+                <p th:if="${#fields.hasErrors('venue')}" th:errors="*{venue}" class="error-msg"></p>
             </div>
 
             <div class="form-group">
                 <label>日時</label>
-                <input type="datetime-local" th:field="*{date}" required>
+                <input type="datetime-local" th:field="*{date}">
+                <p th:if="${#fields.hasErrors('date')}" th:errors="*{date}" class="error-msg"></p>
             </div>
 
             <div class="form-group">
                 <label>出演者</label>
                 <textarea th:field="*{castNames}" placeholder="出演者を改行で入力"></textarea>
+                <p th:if="${#fields.hasErrors('castNames')}" th:errors="*{castNames}" class="error-msg"></p>
             </div>
 
             <div class="form-group">
                 <label>価格 (円)</label>
                 <input type="number" th:field="*{price}" placeholder="3000">
+                <p th:if="${#fields.hasErrors('price')}" th:errors="*{price}" class="error-msg"></p>
             </div>
 
             <div class="form-group">
                 <label>チケット枚数</label>
                 <input type="number" th:field="*{totalCapacity}" placeholder="100">
+                <p th:if="${#fields.hasErrors('totalCapacity')}" th:errors="*{totalCapacity}" class="error-msg"></p>
             </div>
 
             <div class="form-group">
                 <label>初期残数</label>
                 <input type="number" th:field="*{remaining}" placeholder="100">
+                <p th:if="${#fields.hasErrors('remaining')}" th:errors="*{remaining}" class="error-msg"></p>
             </div>
 
             <button type="submit" class="submit-btn">登録する</button>

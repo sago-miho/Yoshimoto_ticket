@@ -6,7 +6,10 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
@@ -20,7 +23,7 @@ public class EventController {
     private EventRepository eventRepository;
 
     /**
-     * 公演一覧画面を表示する
+     * ホーム画面を表示する
      */
     @GetMapping("/home")
     public String viewHome(Model model) {
@@ -34,19 +37,31 @@ public class EventController {
      */
     @GetMapping("/event/new")
     public String showNewEventForm(Model model) {
+        // フォームを空の状態で表示するために、空のエンティティを渡す
         model.addAttribute("event", new EventEntity()); 
         return "event-new";
     }
-
+    
     /**
-     * 公演を保存する処理
+     * 公演を保存する（バリデーションチェック付き）
      */
     @PostMapping("/event/new")
-    public String createEvent(EventEntity event) {
+    public String create(@Validated @ModelAttribute("event") EventEntity event, 
+                         BindingResult result, 
+                         Model model) {
+        
+        // 入力エラーがあった場合
+        if (result.hasErrors()) {
+            // エラーがあった場合、入力途中の内容を保持したまま "event-new" 画面を表示
+            return "event-new";
+        }
+
+        // エラーがなければデータベースに保存
         eventRepository.save(event);
-        // 保存後は /home にリダイレクト
+        // 保存後は一覧画面（/home）にリダイレクト
         return "redirect:/home";
     }
+
 
     /**
      * 公演詳細画面を表示する
