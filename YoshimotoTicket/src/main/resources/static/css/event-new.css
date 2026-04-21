@@ -12,19 +12,20 @@ body {
 
 /* フォームを包むカード */
 .form-container {
-    background: #fff9f0;      /* 🎨 白から「薄いオレンジ」に変更 */
+    background: #fff9f0; 
     padding: 50px;
     border-radius: 16px;
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
     width: 95%;
-    max-width: 800px;         /* 📏 幅を 600px → 800px に広げました */
-    border: 2px solid #ffedcc; /* 枠線も少し濃いオレンジで馴染ませる */
+    max-width: 800px;        
+    border: 2px solid #ffedcc; 
 }
 
+/*タイトル*/
 h1 {
     text-align: center;
     font-size: 32px;
-    color: #333;           /* タイトルの文字色も濃いオレンジ系に */
+    color: #333;           
     margin-bottom: 40px;
     border-bottom: 3px solid #ff4b00;
     display: inline-block;
@@ -44,7 +45,7 @@ label {
     font-size: 14px;
 }
 
-/* 入力ボックス（共通） */
+/* 入力ボックス（共通）*/
 input[type="text"],
 input[type="number"],
 input[type="datetime-local"],

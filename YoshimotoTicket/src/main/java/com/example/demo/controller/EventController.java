@@ -21,7 +21,6 @@ public class EventController {
 
     /**
      * 公演一覧画面を表示する
-     * URLを /home に統一しました
      */
     @GetMapping("/home")
     public String viewHome(Model model) {

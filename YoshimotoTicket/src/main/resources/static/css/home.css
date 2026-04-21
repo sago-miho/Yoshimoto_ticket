@@ -294,8 +294,8 @@
 
 /* 2. 残り10枚を切った場合：赤文字（太字で強調） */
 .performance-status.danger {
-    color: #e74c3c; /* SOLD OUTと同じ赤系統にすることで緊急度を出す */
-    font-weight: 800; /* より太くして目立たせる */
+    color: #e74c3c; 
+    font-weight: 800;
 }
 
 /* 3. SOLD OUT（赤枠）：完売 */

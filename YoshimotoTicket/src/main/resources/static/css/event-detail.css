@@ -16,12 +16,12 @@ body {
     border-radius: 20px;
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
     width: 95%;
-    max-width: 850px;         /* どっしりワイドに */
+    max-width: 850px;         
     border: 2px solid #ffedcc;
     text-align: center;
 }
 
-/* 公演タイトル：巨大化 */
+/* 公演タイトル*/
 .detail-title {
     font-size: 36px;
     color: #333;
@@ -42,7 +42,7 @@ body {
     overflow: hidden;
 }
 
-/* 項目ごとの行（ここで枠区切りを作る） */
+/* 項目ごとの行 */
 .info-table tr {
     border-bottom: 2px solid #fff2e0; /* 薄いオレンジの区切り線 */
 }
@@ -57,17 +57,17 @@ body {
     padding: 25px;
     background-color: #fff2e0;
     color: #8a4d1a;
-    font-size: 20px;           /* 文字サイズアップ */
+    font-size: 20px;           
     text-align: center;
 }
 
 /* 右側：内容（td） */
 .info-table td {
     padding: 25px;
-    font-size: 24px;           /* 内容をさらに大きく！ */
+    font-size: 24px;          
     color: #333;
     font-weight: bold;
-    text-align: center;        /* 内容も中央寄せ */
+    text-align: center;        
 }
 
 /* 販売状況のラベル */
@@ -84,7 +84,7 @@ body {
 .performance-status.danger { background-color: #e67e22; }  /* 残りわずか */
 .performance-status.soldout { background-color: #c0392b; } /* 完売 */
 
-/* 戻るリンク等のエリア（おまけ） */
+/* 戻るリンク等のエリア */
 .back-link {
     display: inline-block;
     margin-top: 30px;

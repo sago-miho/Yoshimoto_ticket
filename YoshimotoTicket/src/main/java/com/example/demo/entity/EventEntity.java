@@ -29,11 +29,11 @@ public class EventEntity {
 
     //公演日時
     @Column(name = "performance_date", nullable = false)
-    private LocalDateTime date; // Thymeleafの ${event.date} に対応
+    private LocalDateTime date; // Thymeleafの ${event.LocalDateTimeDate} に対応
 
     //出演者名
     @Column(name = "cast_names", columnDefinition = "TEXT")
-    private String castNames; // Thymeleafの ${event.cast} に対応
+    private String castNames; // Thymeleafの ${event.castNames} に対応
 
     //チケット価格
     private Integer price;
@@ -45,6 +45,4 @@ public class EventEntity {
     //チケット残数
     private Integer remaining; // 残り枚数
 
-    // 前回のHTMLで ${event.cast} となっていたので、
-    // 変数名を cast にするか、HTML側を castNames に合わせる必要があります。
 }
