@@ -1,11 +1,14 @@
 package com.example.demo.controller;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 
 import com.example.demo.entity.EventEntity;
 import com.example.demo.repository.EventRepository;
@@ -16,13 +19,47 @@ public class EventController {
     @Autowired
     private EventRepository eventRepository;
 
-    @GetMapping("/home") // ブラウザで叩くURL
+    /**
+     * 公演一覧画面を表示する
+     * URLを /home に統一しました
+     */
+    @GetMapping("/home")
     public String viewHome(Model model) {
-    	// 1. DBから全データを取ってくる
         List<EventEntity> events = eventRepository.findAll();
-        // 2. HTML側の ${events} という変数にデータを放り込む
         model.addAttribute("events", events);
-        // 3. home.html を表示する
-        return "home";
+        return "home"; // src/main/resources/templates/home.html を呼び出す
+    }
+
+    /**
+     * 公演追加画面を表示する
+     */
+    @GetMapping("/event/new")
+    public String showNewEventForm(Model model) {
+        model.addAttribute("event", new EventEntity()); 
+        return "event-new";
+    }
+
+    /**
+     * 公演を保存する処理
+     */
+    @PostMapping("/event/new")
+    public String createEvent(EventEntity event) {
+        eventRepository.save(event);
+        // 保存後は /home にリダイレクト
+        return "redirect:/home";
+    }
+
+    /**
+     * 公演詳細画面を表示する
+     */
+    @GetMapping("/event/detail/{id}")
+    public String viewDetail(@PathVariable("id") Long id, Model model) {
+        Optional<EventEntity> eventOpt = eventRepository.findById(id);
+        if (eventOpt.isPresent()) {
+            model.addAttribute("event", eventOpt.get());
+            return "event-detail";
+        } else {
+            return "redirect:/home";
+        }
     }
 }

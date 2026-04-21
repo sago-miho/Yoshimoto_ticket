@@ -33,7 +33,7 @@ public class EventEntity {
 
     //出演者名
     @Column(name = "cast_names", columnDefinition = "TEXT")
-    private String cast; // Thymeleafの ${event.cast} に対応
+    private String castNames; // Thymeleafの ${event.cast} に対応
 
     //チケット価格
     private Integer price;

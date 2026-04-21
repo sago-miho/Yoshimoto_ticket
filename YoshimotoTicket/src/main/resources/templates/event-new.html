@@ -1,34 +1,52 @@
-<form th:action="@{/event/save}" th:object="${event}" method="post">
-    
-    <div class="form-group">
-        <label>公演名</label>
-        <input type="text" th:field="*{title}">
-    </div>
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>公演追加</title>
+    <link rel="stylesheet" th:href="@{/css/event-new.css}">
+</head>
+<body>
+    <div class="form-container">
+        <h1>新規公演登録</h1>
+        <form th:action="@{/event/new}" th:object="${event}" method="post">
+            <div class="form-group">
+                <label>公演名</label>
+                <input type="text" th:field="*{title}" placeholder="例：吉本新喜劇 特別公演" required>
+            </div>
+            
+            <div class="form-group">
+                <label>会場</label>
+                <input type="text" th:field="*{venue}" placeholder="例：なんばグランド花月">
+            </div>
 
-    <div class="form-group">
-        <label>会場</label>
-        <input type="text" th:field="*{venue}">
-    </div>
+            <div class="form-group">
+                <label>日時</label>
+                <input type="datetime-local" th:field="*{date}" required>
+            </div>
 
-    <div class="form-group">
-        <label>日時</label>
-        <input type="datetime-local" th:field="*{date}">
-    </div>
+            <div class="form-group">
+                <label>出演者</label>
+                <textarea th:field="*{castNames}" placeholder="出演者を改行で入力"></textarea>
+            </div>
 
-    <div class="form-group">
-        <label>出演者</label>
-        <input type="text" th:field="*{castNames}">
-    </div>
+            <div class="form-group">
+                <label>価格 (円)</label>
+                <input type="number" th:field="*{price}" placeholder="3000">
+            </div>
 
-    <div class="form-group">
-        <label>チケット料金（円）</label>
-        <input type="number" th:field="*{price}">
-    </div>
+            <div class="form-group">
+                <label>チケット枚数</label>
+                <input type="number" th:field="*{totalCapacity}" placeholder="100">
+            </div>
 
-    <div class="form-group">
-        <label>販売総数（枚）</label>
-        <input type="number" th:field="*{totalTickets}">
-    </div>
+            <div class="form-group">
+                <label>初期残数</label>
+                <input type="number" th:field="*{remaining}" placeholder="100">
+            </div>
 
-    <button type="submit" class="submit-button">公演を登録する</button>
-</form>
+            <button type="submit" class="submit-btn">登録する</button>
+        </form>
+        <a th:href="@{/home}" class="back-link">一覧に戻る</a>
+    </div>
+</body>
+</html>

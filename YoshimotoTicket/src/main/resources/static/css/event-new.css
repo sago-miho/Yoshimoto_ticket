@@ -1,1 +1,104 @@
-@charset "UTF-8";
+/* 全体のレイアウト設定 */
+body {
+    font-family: "Helvetica Neue", Arial, "Hiragino Kaku Gothic ProN", "Hiragino Sans", sans-serif;
+    background-color: #f4f7f6;
+    color: #333;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+
+/* フォームを包むカード */
+.form-container {
+    background: #fff9f0;      /* 🎨 白から「薄いオレンジ」に変更 */
+    padding: 50px;
+    border-radius: 16px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    width: 95%;
+    max-width: 800px;         /* 📏 幅を 600px → 800px に広げました */
+    border: 2px solid #ffedcc; /* 枠線も少し濃いオレンジで馴染ませる */
+}
+
+h1 {
+    text-align: center;
+    font-size: 32px;
+    color: #333;           /* タイトルの文字色も濃いオレンジ系に */
+    margin-bottom: 40px;
+    border-bottom: 3px solid #ff4b00;
+    display: inline-block;
+    width: 100%;
+    padding-bottom: 10px;
+}
+
+/* 入力グループのスタイル */
+.form-group {
+    margin-bottom: 20px;
+}
+
+label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 8px;
+    font-size: 14px;
+}
+
+/* 入力ボックス（共通） */
+input[type="text"],
+input[type="number"],
+input[type="datetime-local"],
+textarea {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    font-size: 16px;
+    box-sizing: border-box; /* paddingを含めたサイズ計算 */
+    transition: border-color 0.3s ease;
+}
+
+input:focus, 
+textarea:focus {
+    outline: none;
+    border-color: #3498db;
+    box-shadow: 0 0 5px rgba(52, 152, 219, 0.2);
+}
+
+textarea {
+    resize: vertical;
+    min-height: 100px;
+}
+
+/* ボタンのスタイル */
+.submit-btn {
+    width: 100%;
+    padding: 14px;
+    background-color: #3498db;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    font-size: 18px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    margin-top: 10px;
+}
+
+.submit-btn:hover {
+    background-color: #2980b9;
+}
+
+/* 戻るリンク */
+.back-link {
+    display: block;
+    text-align: center;
+    margin-top: 20px;
+    color: #7f8c8d;
+    text-decoration: none;
+    font-size: 14px;
+}
+
+.back-link:hover {
+    text-decoration: underline;
+}

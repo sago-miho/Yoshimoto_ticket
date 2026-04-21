@@ -101,32 +101,31 @@
 
 		<!-- 公演一覧 -->
 		<section class="performance">
-			<div class="performance-wrapper">
-				<div class="performance-card" th:each="event : ${events}">
+		    <div class="performance-wrapper">
+		        <div class="performance-card" th:each="event : ${events}">
 
-					<a th:href="@{/event/detail/{id}(id=${event.id})}" class="full-card-link"></a>
+		            <a th:href="@{/event/detail/{id}(id=${event.id})}" class="full-card-link"></a>
 
-					<div class="performance-title" th:text="${event.title}"></div>
+		            <div class="performance-title" th:text="${event.title}">公演名</div>
 
-					<div class="performance-info">
-						<div class="performance-date"
-							th:text="${#temporals.format(event.performanceDate, 'yyyy/MM/dd(E) HH:mm〜')}"></div>
+		            <div class="performance-info">
+		                <div class="performance-date"
+		                    th:text="${#temporals.format(event.date, 'yyyy/MM/dd(E) HH:mm〜')}">2026/04/21 19:00</div>
 
-						<div class="performance-status">
-							<span th:if="${event.remaining <= 0}" class="status-tag soldout">SOLD OUT</span>
-
-							<span th:if="${event.remaining > 0 && event.remaining <= 10}" class="status-tag danger">
-								残り <span th:text="${event.remaining}"></span> 枚
-							</span>
-
-							<span th:if="${event.remaining > 10}" class="status-tag open">
-								残り <span th:text="${event.remaining}"></span> 枚
-							</span>
-						</div>
-					</div>
-
-				</div>
-			</div>
+		                <div class="performance-status" 
+		                     th:classappend="${event.remaining <= 0} ? 'soldout' : (${event.remaining <= 10} ? 'danger' : 'open')">
+		                    
+		                    <span th:if="${event.remaining <= 0}">SOLD OUT</span>
+		                    <span th:if="${event.remaining > 0 && event.remaining <= 10}">
+		                        残り <span th:text="${event.remaining}">5</span> 枚
+		                    </span>
+		                    <span th:if="${event.remaining > 10}">
+		                        残り <span th:text="${event.remaining}">20</span> 枚
+		                    </span>
+		                </div>
+		            </div>
+		        </div>
+		    </div>
 		</section>
 
 		<!-- JavaScript -->

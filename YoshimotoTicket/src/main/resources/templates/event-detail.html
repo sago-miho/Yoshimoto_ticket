@@ -1,39 +1,59 @@
-<main class="detail-card">
-    <h1 class="detail-title" th:text="${event.title} ?: '公演名未設定'"></h1>
-    
-    <table class="info-table">
-        <tr>
-            <th>会場</th>
-            <td th:text="${event.venue} ?: '未定'"></td>
-        </tr>
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>公演詳細</title>
+    <link rel="stylesheet" th:href="@{/css/event-detail.css}">
+</head>
+<body>
+
+    <div class="detail-container">
         
-        <tr>
-            <th>日時</th>
-            <td th:text="${event.date != null} ? ${#temporals.format(event.date, 'yyyy/MM/dd(E) HH:mm〜')} : '未定'"></td>
-        </tr>
+        <main class="detail-card">
+            <h1 class="detail-title" th:text="${event.title} ?: '公演名未設定'"></h1>
+            
+            <table class="info-table">
+                <tr>
+                    <th>会場</th>
+                    <td th:text="${event.venue} ?: '未定'"></td>
+                </tr>
+                
+                <tr>
+                    <th>日時</th>
+                    <td th:text="${event.date != null} ? ${#temporals.format(event.date, 'yyyy/MM/dd(E) HH:mm〜')} : '未定'"></td>
+                </tr>
 
-        <tr>
-            <th>出演者</th>
-            <td th:text="${event.castNames} ?: '調整中'"></td>
-        </tr>
+                <tr>
+                    <th>出演者</th>
+                    <td th:text="${event.castNames} ?: '調整中'"></td>
+                </tr>
 
-        <tr>
-            <th>チケット料金</th>
-            <td th:text="${event.price != null} ? ${event.price} + '円' : '未定'"></td>
-        </tr>
+                <tr>
+                    <th>チケット料金</th>
+                    <td th:text="${event.price != null} ? ${event.price} + '円' : '未定'"></td>
+                </tr>
 
-        <tr>
-            <th>販売状況</th>
-            <td>
-                <span th:if="${event.remaining != null}" 
-                      class="performance-status" 
-                      th:classappend="${event.remaining <= 0} ? 'soldout' : (${event.remaining < 10} ? 'danger' : 'open')"
-                      th:text="${event.remaining <= 0} ? 'SOLD OUT' : '残り ' + ${event.remaining} + ' 枚'">
-                </span>
-                <span th:unless="${event.remaining != null}" class="performance-status open">
-                    発売準備中
-                </span>
-            </td>
-        </tr>
-    </table>
-</main>
+                <tr>
+                    <th>販売状況</th>
+                    <td>
+                        <span th:if="${event.remaining != null}" 
+                              class="performance-status" 
+                              th:classappend="${event.remaining <= 0} ? 'soldout' : (${event.remaining < 10} ? 'danger' : 'open')"
+                              th:text="${event.remaining <= 0} ? 'SOLD OUT' : '残り ' + ${event.remaining} + ' 枚'">
+                        </span>
+                        <span th:unless="${event.remaining != null}" class="performance-status open">
+                            発売準備中
+                        </span>
+                    </td>
+                </tr>
+            </table>
+
+            <div class="action-menu">
+                <a th:href="@{/home}" class="back-link">← 公演一覧に戻る</a>
+            </div>
+        </main>
+        
+    </div>
+
+</body>
+</html>

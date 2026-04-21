@@ -192,8 +192,8 @@
 }
 
 /* 公演セクションタイトル */
-.section-title {
-    font-size: 20px;
+.pickup__tab-title {
+    font-size: 25px;
     font-weight: bold;
     margin-bottom: 12px;
     color: #333;
@@ -247,7 +247,7 @@
 
 /* 公演タイトル部分 */
 .performance-title {
-    font-size: 20px;
+    font-size: 25px;
     font-weight: bold;
     margin-bottom: 0;
     color: #333;
