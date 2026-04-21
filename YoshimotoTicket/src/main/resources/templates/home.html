@@ -13,37 +13,37 @@
 <body>
 	<div class="hero-area">
 
-	<!-- ロゴを表示 -->
-	<div class="hero-logo-top">
-		FANY Online Ticket
-	</div>
-
-	<!-- 公演追加ボタン（ここに置く！） -->
-	    <a href="/event/new" class="add_event_icon_wrapper hero_add_btn">
-	        <div class="add_event_icon">
-	            <span class="material-icons">settings</span>
-	        </div>
-	        <div class="add_event_label">公演追加</div>
-	    </a>
-		
-	<!-- ====== 検索エリア ====== -->
-	<section class="search">
-		<div class="search__inner">
-			<input type="text" class="search__input" placeholder="出演者/公演名/会場名で検索">
-			<button class="search__button">検索</button>
-		</div>
-	</section>
-
-	<!-- ====== スライダー ====== -->
-	<section class="hero">
-		<button class="hero__arrow hero__arrow--left" id="prevBtn">&#9664;</button>
-
-		<div class="hero__banner">
-			<img id="heroImage" class="hero__image" src="/img/banner1.jpg" alt="banner">
+		<!-- ロゴを表示 -->
+		<div class="hero-logo-top">
+			FANY Online Ticket
 		</div>
 
-		<button class="hero__arrow hero__arrow--right" id="nextBtn">&#9654;</button>
-	</section>
+		<!-- 公演追加ボタン（ここに置く！） -->
+		<a href="/event/new" class="add_event_icon_wrapper hero_add_btn">
+			<div class="add_event_icon">
+				<span class="material-icons">settings</span>
+			</div>
+			<div class="add_event_label">公演追加</div>
+		</a>
+
+		<!-- ====== 検索エリア ====== -->
+		<section class="search">
+			<div class="search__inner">
+				<input type="text" class="search__input" placeholder="出演者/公演名/会場名で検索">
+				<button class="search__button">検索</button>
+			</div>
+		</section>
+
+		<!-- ====== スライダー ====== -->
+		<section class="hero">
+			<button class="hero__arrow hero__arrow--left" id="prevBtn">&#9664;</button>
+
+			<div class="hero__banner">
+				<img id="heroImage" class="hero__image" src="/img/banner1.jpg" alt="banner">
+			</div>
+
+			<button class="hero__arrow hero__arrow--right" id="nextBtn">&#9654;</button>
+		</section>
 	</div>
 
 	<!-- ====== PICK UP ====== -->
@@ -54,90 +54,84 @@
 
 		<!-- タブ -->
 		<div class="pickup__tabs">
-		    <h3 class="pickup__tab-title pickup__tab-title--active" data-target="talent">タレント</h3>
+			<h3 class="pickup__tab-title pickup__tab-title--active" data-target="talent">タレント</h3>
 		</div>
 
 
 		<!-- タレント一覧 -->
 		<div class="pickup_content" id="talent">
 
-		    <!-- 滝音 -->
-		    <a href="/talent/takione" class="card">
-		        <img src="/img/talent_takione.jpg" alt="滝音" class="card_thumb takione_thumb">
-		        <p class="card_label">滝音</p>
-		    </a>
+			<!-- 滝音 -->
+			<a href="/talent/takione" class="card">
+				<img src="/img/talent_takione.jpg" alt="滝音" class="card_thumb takione_thumb">
+				<p class="card_label">滝音</p>
+			</a>
 
-		    <!-- ロングコートダディ -->
-		    <a href="/talent/longcoatdaddy" class="card">
-		        <img src="/img/talent_longcoatdaddy.jpg" alt="ロングコートダディ" class="card_thumb lcd_thumb">
-		        <p class="card_label">ロングコートダディ</p>
-		    </a>
+			<!-- ロングコートダディ -->
+			<a href="/talent/longcoatdaddy" class="card">
+				<img src="/img/talent_longcoatdaddy.jpg" alt="ロングコートダディ" class="card_thumb lcd_thumb">
+				<p class="card_label">ロングコートダディ</p>
+			</a>
 
-		    <!-- アキナ -->
-		    <a href="/talent/akina" class="card">
-		        <img src="/img/talent_akina.jpg" alt="アキナ" class="card_thumb akina_thumb">
-		        <p class="card_label">アキナ</p>
-		    </a>
+			<!-- アキナ -->
+			<a href="/talent/akina" class="card">
+				<img src="/img/talent_akina.jpg" alt="アキナ" class="card_thumb akina_thumb">
+				<p class="card_label">アキナ</p>
+			</a>
 
-		    <!-- 祇園 -->
-		    <a href="/talent/gion" class="card">
-		        <img src="/img/talent_gion.jpg" alt="祇園" class="card_thumb">
-		        <p class="card_label">祇園</p>
-		    </a>
+			<!-- 祇園 -->
+			<a href="/talent/gion" class="card">
+				<img src="/img/talent_gion.jpg" alt="祇園" class="card_thumb">
+				<p class="card_label">祇園</p>
+			</a>
 
-		    <!-- 金属バット -->
-		    <a href="/talent/kinzokubatto" class="card">
-		        <img src="/img/talent_kinzokubatto.jpg" alt="金属バット" class="card_thumb">
-		        <p class="card_label">金属バット</p>
-		    </a>
+			<!-- 金属バット -->
+			<a href="/talent/kinzokubatto" class="card">
+				<img src="/img/talent_kinzokubatto.jpg" alt="金属バット" class="card_thumb">
+				<p class="card_label">金属バット</p>
+			</a>
 
 		</div>
 
 
-		
 		<!-- タブ -->
-				<div class="pickup__tabs">
-				    <h3 class="pickup__tab-title" data-target="event">公演</h3>
-				</div>
+		<div class="pickup__tabs">
+			<h3 class="pickup__tab-title" data-target="event">公演</h3>
+		</div>
 
 		<!-- 公演一覧 -->
 		<section class="performance">
-		    <div class="performance-wrapper">
+			<div class="performance-wrapper">
+				<div class="performance-card" th:each="event : ${events}">
 
-		        <div class="performance-card">
-		            <a href="/event/detail/1" class="full-card-link"></a>
-		            <div class="performance-title">なんばグランド花月 昼公演</div>
-		            <div class="performance-info">
-		                <div class="performance-date">2026/07/12(日) 14:00〜</div>
-		                <div class="performance-status soldout">SOLD OUT</div>
-		            </div>
-		        </div>
+					<a th:href="@{/event/detail/{id}(id=${event.id})}" class="full-card-link"></a>
 
-		        <div class="performance-card">
-		            <a href="/event/detail/2" class="full-card-link"></a>
-		            <div class="performance-title">ルミネtheよしもと 夜公演</div>
-		            <div class="performance-info">
-		                <div class="performance-date">2026/07/20(月) 19:00〜</div>
-		                <div class="performance-status danger">残り 5 枚</div>
-		            </div>
-		        </div>
+					<div class="performance-title" th:text="${event.title}"></div>
 
-		        <div class="performance-card">
-		            <a href="/event/detail/3" class="full-card-link"></a>
-		            <div class="performance-title">祇園花月 昼公演</div>
-		            <div class="performance-info">
-		                <div class="performance-date">2026/08/02(日) 13:00〜</div>
-		                <div class="performance-status open">残り 80 枚</div>
-		            </div>
-		        </div>
+					<div class="performance-info">
+						<div class="performance-date"
+							th:text="${#temporals.format(event.performanceDate, 'yyyy/MM/dd(E) HH:mm〜')}"></div>
 
-		    </div>
+						<div class="performance-status">
+							<span th:if="${event.remaining <= 0}" class="status-tag soldout">SOLD OUT</span>
+
+							<span th:if="${event.remaining > 0 && event.remaining <= 10}" class="status-tag danger">
+								残り <span th:text="${event.remaining}"></span> 枚
+							</span>
+
+							<span th:if="${event.remaining > 10}" class="status-tag open">
+								残り <span th:text="${event.remaining}"></span> 枚
+							</span>
+						</div>
+					</div>
+
+				</div>
+			</div>
 		</section>
 
-	<!-- JavaScript -->
-	<script th:src="@{/js/hero-slider.js}"></script>
-	<script th:src="@{/js/pickup-tabs.js}"></script>
+		<!-- JavaScript -->
+		<script th:src="@{/js/hero-slider.js}"></script>
+		<script th:src="@{/js/pickup-tabs.js}"></script>
 
 </body>
-
 </html>
