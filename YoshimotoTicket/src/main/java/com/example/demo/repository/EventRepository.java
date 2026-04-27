@@ -8,3 +8,4 @@ import com.example.demo.entity.EventEntity;
 @Repository
 public interface EventRepository extends JpaRepository<EventEntity, Long> {
 }
+//データベースとの処理を自動化

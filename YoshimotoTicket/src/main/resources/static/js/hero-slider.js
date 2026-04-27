@@ -7,7 +7,7 @@ const heroImages = [
 
 // ランダム開始
 let currentIndex = Math.floor(Math.random() * heroImages.length);
-
+//矢印の有効化
 const heroImage = document.getElementById("heroImage");
 const prevBtn = document.getElementById("prevBtn");
 const nextBtn = document.getElementById("nextBtn");

@@ -69,11 +69,11 @@ public class EventController {
     @GetMapping("/event/detail/{id}")
     public String viewDetail(@PathVariable("id") Long id, Model model) {
         Optional<EventEntity> eventOpt = eventRepository.findById(id);
-        if (eventOpt.isPresent()) {
-            model.addAttribute("event", eventOpt.get());
+        if (eventOpt.isPresent()) {//IDに紐づく詳細をデータベースから探し出して詳細画面に表示
+            model.addAttribute("event", eventOpt.get());//Optional 存在しないIDが指定された場合のエラー
             return "event-detail";
         } else {
-            return "redirect:/home";
+            return "redirect:/home";//データが見つからなかった場合
         }
     }
     

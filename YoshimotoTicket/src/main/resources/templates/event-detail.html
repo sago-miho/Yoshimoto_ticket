@@ -50,9 +50,9 @@
 
             <div class="action-menu">
 				<!--チケット予約処理-->
-				<form th:action="@{/event/purchase/{id}(id=${event.id})}" method="post">
+				<form th:action="@{/event/purchase/{id}(id=${event.id})}" method="post"><!--どの公演の情報なのかのURLを自動で作ってくれてる-->
 				                    <button type="submit" class="buy-btn" 
-				                            th:disabled="${event.remaining <= 0}">
+				                            th:disabled="${event.remaining <= 0}"><!--売り切れの場合はボタンの無効化-->
 				                        <span th:text="${event.remaining > 0} ? 'チケットを予約する' : '完売しました'"></span>
 				                    </button>
 				                </form>
