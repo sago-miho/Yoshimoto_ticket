@@ -14,83 +14,86 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import com.example.demo.entity.EventEntity;
-import com.example.demo.repository.EventRepository;
+import com.example.demo.service.EventService;
 
 @Controller
 public class EventController {
 
     @Autowired
-    private EventRepository eventRepository;
+    private EventService eventService; 
 
     /**
-     * ホーム画面を表示する
+     * ホーム画面表示（一覧）
      */
     @GetMapping("/home")
     public String viewHome(Model model) {
-        List<EventEntity> events = eventRepository.findAll();
+
+        // Serviceクラスから公演一覧情報の取得
+        List<EventEntity> events = eventService.findAll();
+
+        // 画面に渡す
         model.addAttribute("events", events);
-        return "home"; // src/main/resources/templates/home.html を呼び出す
+
+        return "home"; 
     }
 
     /**
-     * 公演追加画面を表示する
+     * 公演追加画面を表示
      */
     @GetMapping("/event/new")
     public String showNewEventForm(Model model) {
-        // フォームを空の状態で表示するために、空のエンティティを渡す
-        model.addAttribute("event", new EventEntity()); 
+
+        // 空の EventEntity を画面に渡す（フォーム用）
+        model.addAttribute("event", new EventEntity());
+
         return "event-new";
     }
-    
+
     /**
-     * 公演を保存する（バリデーションチェック付き）
+     * 公演を保存（POST）
      */
     @PostMapping("/event/new")
-    public String create(@Validated @ModelAttribute("event") EventEntity event, 
-                         BindingResult result, 
+    public String create(@Validated @ModelAttribute("event") EventEntity event,
+                         BindingResult result,
                          Model model) {
-        
-        // 入力エラーがあった場合
+
+        // 入力チェック（バリデーションエラー）
         if (result.hasErrors()) {
-            // エラーがあった場合、入力途中の内容を保持したまま "event-new" 画面を表示
-            return "event-new";
+            return "event-new"; // 入力画面に戻る
         }
 
-        // エラーがなければデータベースに保存
-        eventRepository.save(event);
-        // 保存後は一覧画面（/home）にリダイレクト
-        return "redirect:/home";
+        // Service に保存処理を依頼
+        eventService.save(event);
+
+        return "redirect:/home"; // 保存後一覧へ
     }
 
-
     /**
-     * 公演詳細画面を表示する
+     * 公演詳細画面
      */
     @GetMapping("/event/detail/{id}")
     public String viewDetail(@PathVariable("id") Long id, Model model) {
-        Optional<EventEntity> eventOpt = eventRepository.findById(id);
-        if (eventOpt.isPresent()) {//IDに紐づく詳細をデータベースから探し出して詳細画面に表示
-            model.addAttribute("event", eventOpt.get());//Optional 存在しないIDが指定された場合のエラー
-            return "event-detail";
+    	//対象の情報をServiceクラスから取得する
+        Optional<EventEntity> eventOpt = eventService.findById(id);
+
+        if (eventOpt.isPresent()) {
+            model.addAttribute("event", eventOpt.get());
+            return "event-detail"; // 詳細画面へ
         } else {
-            return "redirect:/home";//データが見つからなかった場合
+            return "redirect:/home"; // なければ一覧へ
         }
     }
-    
- // 予約処理（POSTリクエスト）
+
+    /**
+     * チケット購入処理（POST）
+     */
     @PostMapping("/event/purchase/{id}")
     public String purchaseTicket(@PathVariable("id") Long id) {
-        // データベースから公演情報を取得
-        EventEntity event = eventRepository.findById(id).get();
 
-        // 在庫が0より大きい場合のみ引き算する
-        if (event.getRemaining() > 0) {
-            event.setRemaining(event.getRemaining() - 1);
-            // データベースを更新（上書き保存）
-            eventRepository.save(event);
-        }
+        // 購入処理
+        eventService.purchaseTicket(id);
 
-        //更新後の詳細画面へリダイレクト（再表示）
+        // 処理後、同じ詳細画面へ戻る
         return "redirect:/event/detail/" + id;
     }
 }
